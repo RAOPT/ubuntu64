@@ -1,0 +1,48 @@
+用法：ln [选项]... [-T] 目标 链接名
+　或：ln [选项]... 目标
+　或：ln [选项]... 目标... 目录
+　或：ln [选项]... -t 目录 目标...
+在第一种格式中，创建具有指定<链接名>且指向指定<目标>的链接。
+在第二种格式中，在当前目录创建指向<目标>位置的链接。
+在第三、四种格式中，在指定<目录>中创建指向指定<目标>的链接。
+默认创建硬链接，当使用--symbolic 时创建符号链接。
+默认情况下，创建每个目标时不应存在与新链接的名称相同的文件。
+创建硬链接时，每个指定的<目标>都必须存在。符号链接可以指向任意的位置；
+当链接解析正常时，将其解析为一个相对于其父目录的相对链接。
+
+必选参数对长短选项同时适用。
+      --backup[=CONTROL]      为每个已存在的目标文件创建备份文件
+  -b                          类似--backup，但不接受任何参数
+  -d, -F, --directory         允许超级用户尝试创建指向目录的硬链接
+                              （注意：此操作可能因系统限制而失败)
+  -f, --force                 强行删除任何已存在的目标文件
+  -i, --interactive           删除目标文件前进行确认
+  -L, --logical               如目标为符号链接，本次创建链接时将其解引用
+  -n, --no-dereference        如果给定<链接名>是一个链接至某目录的符号链接，
+                                将其作为普通文件处理
+  -P, --physical              创建直接指向符号链接文件的硬链接
+  -r, --relative              创建相对于链接位置的符号链接
+  -s, --symbolic              创建符号链接而非硬链接
+  -S, --suffix=后缀           自行指定备份文件的后缀
+  -t, --target-directory=目录  在指定<目录>中创建链接
+  -T, --no-target-directory   总是将给定的<链接名>当作普通文件
+  -v, --verbose               列出每个链接的文件名称
+      --help		显示此帮助信息并退出
+      --version		显示版本信息并退出
+
+备份文件的后缀为"~"，除非以--suffix 选项或是 SIMPLE_BACKUP_SUFFIX
+环境变量指定。版本控制的方式可通过--backup 选项或 VERSION_CONTROL 环境
+变量来选择。以下是可用的变量值：
+
+  none, off       不进行备份(即使使用了--backup 选项)
+  numbered, t     备份文件加上数字进行排序
+  existing, nil   若有数字的备份文件已经存在则使用数字，否则使用普通方式备份
+  simple, never   永远使用普通方式备份
+
+使用 -s 选项会忽略 -L 和 -P。
+否则当<目标>为一个符号链接（默认为 -P）时，会由最后一个指定的选项来控制行为。
+
+GNU coreutils 在线帮助：<https://www.gnu.org/software/coreutils/>
+请向 <http://translationproject.org/team/zh_CN.html> 报告 ln 的翻译错误
+完整文档请见：<https://www.gnu.org/software/coreutils/ln>
+或者在本地使用：info '(coreutils) ln invocation'
